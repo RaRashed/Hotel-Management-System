@@ -48,7 +48,7 @@
 
                </div>
                <div   class="from-group">
-                <label for="title">Price</label>
+                <label for="title">Images</label>
 
                 <input type="file" multiple name="imgs[]"  class="form-control">
 
