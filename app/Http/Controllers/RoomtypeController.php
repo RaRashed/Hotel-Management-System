@@ -78,6 +78,7 @@ class RoomtypeController extends Controller
     public function show($id)
     {
         $roomtype=RoomType::find($id);
+       // dd($roomtype->roomtypeimages());
         return view('roomtype.show',['roomtype'=>$roomtype]);
     }
 
@@ -109,7 +110,22 @@ $room->price = $request->price;
 
 $room->detail= $request->detail;
 $room->update();
-return redirect(route('roomtype.index'))->with('success', 'Roomtype Created Successfully');
+
+if($request->hasFile('imgs')){
+foreach($request->file('imgs') as $img)
+        {
+
+        $imgPath =$img->store('imgs');
+        $imgData = new Roomtypeimage;
+        $imgData->room_type_id = $room->id;
+        $imgData->image_src = $imgPath;
+        $imgData->image_alt = $request->title;
+        $imgData->save();
+
+
+        }
+    }
+return redirect('admin/roomtype/'.$id.'/edit')->with('success', 'Roomtype Created Successfully');
 
     }
 

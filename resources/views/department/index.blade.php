@@ -6,8 +6,8 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Room Types
-                <a href="{{ route('roomtype.create') }}" class="float-right btn btn-success btn-sm">Add New</a>
+            <h6 class="m-0 font-weight-bold text-primary">Department
+                <a href="{{ route('department.create') }}" class="float-right btn btn-success btn-sm">Add New</a>
             </h6>
         </div>
         <div class="card-body">
@@ -19,34 +19,34 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
+                            <th>#</th>
                             <th>Title</th>
-                            <th>Price</th>
-                            <th>GalleryImages</th>
+                            <th>Detail</th>
                             <th>Action</th>
 
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
+                            <th>#</th>
+
                             <th>Title</th>
-                            <th>Price</th>
-                             <th>GalleryImages</th>
+                            <th>Detail</th>
                             <th>Action</th>
                         </tr>
                     </tfoot>
                     <tbody>
-
-                        @foreach ($roomtypes as $roomtype )
+                        @foreach ($departments as $department )
                         <tr>
+                            <td></td>
+                            <td>{{ $department->title }}</td>
 
-                            <td>{{ $roomtype->title }}</td>
-                            <td>{{ $roomtype->price }}</td>
-                            <td>{{ count($roomtype->roomtypeimages) }}</td>
+                            <td>{{ $department->detail }}</td>
                             <td>
-                            <a href="{{ route('roomtype.show',$roomtype->id) }}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
-                            <a href="{{ route('roomtype.edit',$roomtype->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
-                            <a onclick="return confirm('are you sure?')" href="/admin/roomtype/{{$roomtype->id}}/delete" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
-                            <form method="post" action="{{route('roomtype.destroy',$roomtype->id)}}">
+                            <a href="{{ route('department.show',$department->id) }}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
+                            <a href="{{ route('department.edit',$department->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
+                            <a onclick="return confirm('are you sure?')" href="/admin/department/{{$department->id}}/delete" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                            <form method="post" action="{{route('department.destroy',$department->id)}}">
                                 @method('delete')
                                 @csrf
                                 <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>

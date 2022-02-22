@@ -6,7 +6,7 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Room Types
+            <h6 class="m-0 font-weight-bold text-primary">Update {{ $roomtype->title }}
                 <a href="{{ route('roomtype.index') }}" class="float-right btn btn-success btn-sm">View All</a>
             </h6>
         </div>
@@ -24,7 +24,7 @@
             <p class="text-success">{{ session('success') }}</p>
 
             @endif
-            <form action="{{ route('roomtype.update',$roomtype->id)}}" method="post">
+            <form action="{{ route('roomtype.update',$roomtype->id)}}" enctype="multipart/form-data" method="post">
 
                 @csrf
                 @method('put')
@@ -50,6 +50,7 @@
                </div>
                <div   class="from-group">
                 <label for="detail">Image Gallary</label>
+                <input type="file" multiple name="imgs[]"  class="form-control">
 
                 <table class="table table-bordered">
                     <tr>

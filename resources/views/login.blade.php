@@ -10,12 +10,7 @@
     <meta name="author" content="">
 
     <title>Hotel Management - Login</title>
-    @if(Session::has('adminData'))
-    <script type="text/javascript">
-        window.location.href="{{ url('admin') }}";
-    </script>
 
-    @endif
 
     <!-- Custom fonts for this template-->
     <link href="{{ asset('asset/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">

@@ -11,6 +11,13 @@
 
     <title>SB Admin 2 - Blank</title>
 
+    @if(!Session::has('adminData'))
+    <script type="text/javascript">
+        window.location.href="{{ url('admin/login') }}";
+    </script>
+
+    @endif
+
     <!-- Custom fonts for this template-->
    @include('partials.style')
    @yield('style')
@@ -96,6 +103,38 @@
                         <h6 class="collapse-header">Room</h6>
                         <a class="collapse-item" href="{{ route('customer.create') }}">Add New</a>
                         <a class="collapse-item" href="{{ route('customer.index') }}">View All</a>
+
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link @if(!request()->is('admin/department*')) collapsed @endif" href="#" data-toggle="collapse" data-target="#collapseDepartment"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-fw fa-users"></i>
+                    <span>Department</span>
+                </a>
+                <div id="collapseDepartment" class="collapse @if(request()->is('admin/department*')) show @endif" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Department</h6>
+                        <a class="collapse-item" href="{{ route('department.create') }}">Add New</a>
+                        <a class="collapse-item" href="{{ route('department.index') }}">View All</a>
+
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link @if(!request()->is('admin/staff*')) collapsed @endif" href="#" data-toggle="collapse" data-target="#collapseStaff"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-fw fa-users"></i>
+                    <span>Staff</span>
+                </a>
+                <div id="collapseStaff" class="collapse @if(request()->is('admin/staff*')) show @endif" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Department</h6>
+                        <a class="collapse-item" href="{{ route('staff.create') }}">Add New</a>
+                        <a class="collapse-item" href="{{ route('staff.index') }}">View All</a>
 
                     </div>
                 </div>
