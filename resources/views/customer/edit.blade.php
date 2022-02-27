@@ -41,12 +41,7 @@
                 <input type="email" class="form-control" name="email" value="{{ $customer->email }}">
 
                </div>
-               <div   class="from-group">
-                <label for="title">Password</label>
 
-                <input type="password" class="form-control" name="password" value="{{ $customer->password }}">
-
-               </div>
                <div   class="from-group">
                 <label for="title">Phone</label>
 
@@ -59,10 +54,11 @@
                 <input type="text" class="form-control" name="address" value="{{ $customer->address }}">
 
                </div>
+
                <div   class="from-group">
                 <label for="title">Photo</label>
 
-                <input type="file" class="form-control" name="photo" value="{{ $customer->photo }}">
+                <input type="file" class="form-control" name="photo">
                 <input type="hidden" value="{{$customer->photo}}" name="prev_photo" >
                 <img src="{{ asset('storage/'.$customer->photo) }}" height="100px" width="100px">
 

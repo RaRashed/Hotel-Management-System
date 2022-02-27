@@ -156,6 +156,14 @@ return redirect(route('staff.index'))->with('success', 'Staff Updated Successful
         return redirect(route('staff.index'))->with('success', 'Staff deleted Successfully');
 
     }
+    public function all_payment(Request $request,$staff_id)
+
+    {
+        $data = StaffPayment::where('staff_id',$staff_id)->get();
+        $staff=Staff::find($staff_id);
+
+        return view('staffpayment.index',['staff_id'=>$staff_id,'data'=>$data,'staff'=>$staff]);
+    }
     public function add_payment($staff_id)
     {
         return view('staffpayment.create',['staff_id'=>$staff_id]);
@@ -172,6 +180,15 @@ return redirect(route('staff.index'))->with('success', 'Staff Updated Successful
         ]);
         return redirect(route('staff.index'))->with('success', 'Staff Created Successfully');
 
+
+    }
+
+
+    public function delete_payment($id,$staff_id)
+    {
+        StaffPayment::where('id',$id)->delete();
+
+        return redirect('admin/staff/payments/'.$staff_id)->with('success', 'Staff Payment deleted Successfully');
 
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CustomerController extends Controller
 {
@@ -101,33 +102,39 @@ class CustomerController extends Controller
     {
         $validated = $request->validate([
             'full_name' => 'required|max:255',
-            'email' => 'required|email',
+            'email' => 'required',
             'phone' => 'required',
             'address' => 'required',
-            'photo' => 'required'
+
 
 
 
 
         ]);
+
+
+        $customer = Customer::find($id);
+
         if($request->hasFile('photo')){
+            Storage::delete($customer->photo);
 
 
-        $image =$request->photo->store('customers');
+        $image =$request->file('photo')->store('customers');
         }
         else
         {
             $image = $request->prev_photo;
-        }
 
-$customer = Customer::find($id);
+        }
 $customer->full_name = $request->full_name;
 $customer->email = $request->email;
-$customer->password = sha1($request->password);
 $customer->phone = $request->phone;
 $customer->address = $request->address;
+
 $customer->photo = $image;
+
 $customer->update();
+
 return redirect(route('customer.index'))->with('success', 'customer Created Successfully');
 
     }

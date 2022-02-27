@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BookingController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoomtypeController;
 use App\Http\Controllers\RoomController;
@@ -64,5 +65,12 @@ Route::get('admin/staff/{id}/delete',[StaffController::class, 'destroy']);
 Route::resource('admin/staff', StaffController::class);
 
 //Staff Payment
+Route::get('admin/staff/payments/{id}',[StaffController::class, 'all_payment']);
 Route::get('admin/staff/payment/{id}/add_payment',[StaffController::class, 'add_payment']);
 Route::post('admin/staff/payment/{id}',[StaffController::class, 'save_payment']);
+Route::get('admin/staff/payment/{id}/{$staff_id}/delete',[StaffController::class, 'delete_payment']);
+
+//Booking Routes
+Route::get('admin/booking/available-rooms/{checkin_date}',[BookingController::class, 'available_rooms']);
+Route::get('admin/booking/{id}/delete',[StaffController::class, 'destroy']);
+Route::resource('admin/booking', BookingController::class);

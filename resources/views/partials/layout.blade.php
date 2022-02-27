@@ -140,6 +140,11 @@
                 </div>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="{{ route('booking.create') }}">
+                    <i class="fas fa-fw fa-book"></i>
+                    <span>Booking Room</span></a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="{{ url('admin/logout') }}">
                     <i class="fas fa-fw fa-sign-out-alt"></i>
                     <span>Logout</span></a>
