@@ -42,18 +42,37 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'customer_id' => 'required',
+            'checkin_date' => 'required',
+            'checkout_date' => 'required',
+            'room_id' => 'required',
+            'total_adults' => 'required',
+            'total_children' => 'required'
+
+
+        ]);
         Booking::create([
 
             'customer_id' => $request->customer_id,
-            'room_id' => $request->room_id,
             'checkin_date' => $request->checkin_date,
             'checkout_date' => $request->checkout_date,
+            'room_id' => $request->room_id,
             'total_adults' => $request->total_adults,
             'total_children' => $request->total_children
         ]);
+        if($request->ref == 'front')
+        {
+            return redirect(url('booking'))->with('success', 'Booking Created Successfully');
+
+        }
+        else
+        {
+            return redirect(route('booking.create'))->with('success', 'Booking Created Successfully');
+        }
 
 
-      return redirect(route('booking.create'))->with('success', 'Booking Created Successfully');
+
     }
 
     /**
@@ -104,7 +123,12 @@ class BookingController extends Controller
     public function available_rooms(Request $request,$checkin_date)
     {
         $rooms=DB::SELECT("SELECT * FROM rooms where id NOT IN (SELECT room_id FROM bookings WHERE '$checkin_date' BETWEEN checkin_date AND checkout_date )");
-        return response()->json($rooms);
+        return response()->json(['data'=>$rooms]);
 
+    }
+    public function front_booking()
+    {
+
+        return view('frontend.booking.create');
     }
 }

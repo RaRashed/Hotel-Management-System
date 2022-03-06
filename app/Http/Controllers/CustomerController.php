@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Storage;
 
 class CustomerController extends Controller
@@ -154,4 +155,76 @@ return redirect(route('customer.index'))->with('success', 'customer Created Succ
         return redirect(route('customer.index'))->with('success', 'customer deleted Successfully');
 
     }
+    public function register()
+    {
+        return view('frontend.register');
+    }
+    public function register_check(Request $request)
+    {
+        $validated = $request->validate([
+            'full_name' => 'required|unique:customers|max:255',
+            'email' => 'required|email|unique:customers',
+            'password' => 'required',
+            'phone' => 'required',
+            'address' => 'required',
+            'photo' => 'required'
+
+
+
+
+        ]);
+
+        $image =$request->photo->store('customers');
+
+        Customer::create([
+
+            'full_name' => $request->full_name,
+            'email' => $request->email,
+            'password' => sha1($request->password),
+            'phone' => $request->phone,
+            'address' => $request->address,
+            'photo' =>$image
+        ]);
+
+
+      return redirect(url('login'))->with('success', 'customer Created Successfully');
+    }
+
+    public function login()
+    {
+        return view('frontend.login');
+    }
+    public function login_check(Request $request)
+    {
+        $email=$request->email;
+        $password=sha1($request->password);
+
+        $detail=Customer::where(['email'=> $email,'password'=>$password])->count();
+
+        if($detail>0)
+        {
+            $customer=Customer::where(['email'=> $email,'password'=>$password])->get();
+            session(['customerSession'=> $customer]);
+            if($request->has('rememberme'))
+            {
+                Cookie::queue('customeremail',$email,1440);
+                Cookie::queue('customerpassword',$request->password,1440);
+
+            }
+            return redirect('/');
+        }
+        else
+        {
+            return redirect('login')->with('success','Invalid Email/Password');
+        }
+
+
+
+    }
+    public function logout()
+    {
+        session()->forget(['customerSession']);
+        return redirect('login');
+    }
+
 }

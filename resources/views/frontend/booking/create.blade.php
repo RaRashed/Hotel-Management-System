@@ -1,5 +1,6 @@
-@extends('partials.layout')
+@extends('frontend.layout.frontendlayout')
 @section('content')
+<div class="container">
 
 <div class="container-fluid">
 
@@ -27,18 +28,11 @@
             <form action="{{ route('booking.store')}}" method="post">
 
                 @csrf
+                <input type="hidden" name="customer_id" value="{{session('customerSession')[0]->id  }}">
 
-                <div   class="from-group">
-                    <label for="title">Customer</label>
+                <input type="hidden" name="ref" value="front">
 
-                    <select class="form-control" name="customer_id">
-                        <option value="0">----select----</option>
-                        @foreach ($customers as $customer )
-                        <option value="{{ $customer->id }}">{{ $customer->full_name }}</option>
-                        @endforeach
-                    </select>
 
-                   </div>
 
                <div   class="from-group">
                 <label for="title">Checking Date</label>
@@ -94,6 +88,7 @@
 --}}
                <div class="form-group">
 
+
                    <button class="btn btn-success mb-2">
                        Book Room
                    </button>
@@ -106,7 +101,7 @@
 
 @endsection
 
-@section('script')
+@section('fscript')
 <script>
     $(document).ready(function(){
         $(".checkin-date").on('blur',function(){

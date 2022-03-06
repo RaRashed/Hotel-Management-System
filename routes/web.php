@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoomtypeController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\StaffDepartmentController;
 use App\Models\RoomType;
@@ -20,10 +21,9 @@ use App\Models\RoomType;
 | contains the "web" middleware group. Now create something great!
 |
 */
+//Home page
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/',[HomeController::class, 'home']);
 //Admin Login
 Route::get('admin/login',[AdminController::class, 'login']);
 Route::post('admin/login_check',[AdminController::class, 'check_login']);
@@ -31,10 +31,7 @@ Route::get('admin/logout',[AdminController::class, 'logout']);
 
 
 //Admin Dashboard
-Route::get('admin', function () {
-
-    return view('dashboard');
-});
+Route::get('admin',[AdminController::class, 'dashboard']);
 //RoomType Routes
 Route::get('admin/roomtype/{id}/delete',[RoomtypeController::class, 'destroy']);
 Route::resource('admin/roomtype', RoomtypeController::class);
@@ -74,3 +71,13 @@ Route::get('admin/staff/payment/{id}/{$staff_id}/delete',[StaffController::class
 Route::get('admin/booking/available-rooms/{checkin_date}',[BookingController::class, 'available_rooms']);
 Route::get('admin/booking/{id}/delete',[StaffController::class, 'destroy']);
 Route::resource('admin/booking', BookingController::class);
+
+//Frontend Customer Routes
+Route::get('register',[CustomerController::class, 'register']);
+Route::post('register_check',[CustomerController::class, 'register_check']);
+Route::get('login',[CustomerController::class, 'login']);
+Route::post('login_check',[CustomerController::class, 'login_check']);
+Route::get('logout',[CustomerController::class, 'logout']);
+
+//Frontend Booking
+Route::get('booking',[BookingController::class, 'front_booking']);
