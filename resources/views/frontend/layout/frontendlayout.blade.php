@@ -43,8 +43,12 @@
                 <a class="nav-link" href="{{ url('logout') }}">Logout</a>
               </li>
               <li class="nav-item">
+                <a class="nav-link" href="{{ url('customer/add-testimonial') }}">Add Testimonial</a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link btn btn-sm btn-danger" href="{{ url('booking') }}">Booking</a>
               </li>
+
 
               @else
 

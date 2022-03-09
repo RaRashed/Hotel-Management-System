@@ -7,6 +7,7 @@ use App\Http\Controllers\RoomtypeController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\StaffDepartmentController;
 use App\Models\RoomType;
@@ -71,6 +72,7 @@ Route::get('admin/staff/payment/{id}/{$staff_id}/delete',[StaffController::class
 Route::get('admin/booking/available-rooms/{checkin_date}',[BookingController::class, 'available_rooms']);
 Route::get('admin/booking/{id}/delete',[StaffController::class, 'destroy']);
 Route::resource('admin/booking', BookingController::class);
+Route::get('admin/booking/{id}/delete',[BookingController::class, 'destroy']);
 
 //Frontend Customer Routes
 Route::get('register',[CustomerController::class, 'register']);
@@ -81,3 +83,19 @@ Route::get('logout',[CustomerController::class, 'logout']);
 
 //Frontend Booking
 Route::get('booking',[BookingController::class, 'front_booking']);
+
+//Payments Route
+Route::get('booking/success',[BookingController::class, 'booking_payment_success']);
+Route::get('booking/fail',[BookingController::class, 'booking_payment_fail']);
+
+//Service CRUD
+
+Route::get('admin/service/{id}/delete',[ServiceController::class, 'destroy']);
+Route::resource('admin/service', ServiceController::class);
+
+Route::get('service/detail/{id}',[HomeController::class, 'detail']);
+
+//Testimonial
+Route::get('customer/add-testimonial',[HomeController::class, 'add_testimonial']);
+
+Route::post('customer/save-testimonial',[HomeController::class, 'save_testimonial']);

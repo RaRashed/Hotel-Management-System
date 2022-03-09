@@ -6,8 +6,8 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Rooms
-                <a href="{{ route('rooms.index') }}" class="float-right btn btn-success btn-sm">View All</a>
+            <h6 class="m-0 font-weight-bold text-primary">Add Service
+                <a href="{{ route('service.index') }}" class="float-right btn btn-success btn-sm">View All</a>
             </h6>
         </div>
         @if ($errors->any())
@@ -24,7 +24,7 @@
             <p class="text-success">{{ session('success') }}</p>
 
             @endif
-            <form action="{{ route('rooms.store')}}" method="post">
+            <form action="{{ route('service.store')}}" method="post" enctype="multipart/form-data">
 
                 @csrf
 
@@ -35,25 +35,34 @@
 
                </div>
                <div   class="from-group">
-                <label for="title">Room Type</label>
+                <label for="title">Description</label>
 
-
-                <select class="form-control" name="room_type_id" id="">
-                    <option></option>
-                    @foreach ($roomtypes as $roomtype )
-                    <option value="{{ $roomtype->id }}">{{ $roomtype->title }}</option>
-                    @endforeach
-
-                </select>
-
-
+                <input type="text" id="title" class="form-control" name="small_desc">
 
                </div>
+               <div   class="from-group">
+                <label for="title">Detail Description</label>
+
+                <textarea name="detail_desc" id="" cols="30" rows="10" class="form-control"></textarea>
+
+               </div>
+
+               <div   class="from-group">
+                <label for="title">Photo</label>
+
+                <input type="file" class="form-control" name="photo">
+
+               </div>
+
+
+
+
+
 
                <div class="form-group">
 
                    <button class="btn btn-success mb-2">
-                       Add Room
+                       Add service
                    </button>
                </div>
             </form>

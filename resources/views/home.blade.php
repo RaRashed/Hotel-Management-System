@@ -29,32 +29,23 @@
    <!-- Service Section Strat -->
    <div class="container my-4">
     <h1 class="text-center border-bottom">Services</h1>
-    <div class="row my-4">
+   @foreach ($services as $service )
+   <div class="row my-4">
     <div class="col-md-4">
-     <img src="{{ asset('asset/img/h4.jpg') }}" class="img-thumbnail" alt="...">
+     <img src="{{asset('storage/'.$service->photo)}}" class="img-thumbnail" alt="...">
     </div>
     <div class="col-md-8">
-        <h3>Service Heading</h3>
-        <p>Looking to quickly add Bootstrap to your project? Use jsDelivr, a free open source CDN. Using a package manager or need to download the source files</p>
+        <h3>{{ $service->title }}</h3>
         <p>
-            <a href="" class="btn btn-sm btn-primary">Read More</a>
+            {{ $service->small_desc }}
+        <p>
+            <a href="{{ url('service/detail/'.$service->id) }}" class="btn btn-sm btn-primary">Read More</a>
         </p>
 
     </div>
     </div>
-    <div class="row my-4">
-        <div class="col-md-4">
-         <img src="{{ asset('asset/img/h5.jpg') }}" class="img-thumbnail" alt="...">
-        </div>
-        <div class="col-md-8">
-            <h3>Service Heading</h3>
-            <p>Looking to quickly add Bootstrap to your project? Use jsDelivr, a free open source CDN. Using a package manager or need to download the source files</p>
-            <p>
-                <a href="" class="btn btn-sm btn-primary">Read More</a>
-            </p>
 
-        </div>
-        </div>
+   @endforeach
 </div>
 
 
@@ -98,12 +89,42 @@
 </div>
 
 @endforeach
-
-
-
     </div>
    </div>
+   <!-- Gallery Section End -->
+    <!-- Testimonial Section Start -->
+    <h1 class="text-center border-bottom">Testimonials</h1>
+
+    <div id="testimonials" class="carousel slide p-5 bg-dark text-white border mb-5" data-bs-ride="carousel">
+        <div class="carousel-inner">
+        @foreach ($testimonials as $index => $testi )
+        <div class="carousel-item @if($index==0) active @endif">
+            <blockquote class="blockquote text-center">
+                <p class="mb-2">{{ $testi->testi_cont }}</p>
+                <footer class="blockquote-footer">Created By <cite title="Source Title">{{ $testi->customer->full_name }}</cite></footer>
+              </blockquote>
+          </div>
+        @endforeach
+
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#testimonials" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#testimonials" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+       <!-- Testimonial Section End -->
+
 </div>
+
+
+
+
+
    @section('fstyle')
 
    <style>

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBookingsTable extends Migration
+class CreateTestimonialsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,10 @@ class CreateBookingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('bookings', function (Blueprint $table) {
+        Schema::create('testimonials', function (Blueprint $table) {
             $table->id();
             $table->integer('customer_id');
-            $table->integer('room_id');
-            $table->string('checkin_date');
-            $table->string('checkout_date');
-            $table->string('total_adults');
-            $table->string('total_children');
-            $table->string('ref');
+            $table->text('testi_cont');
             $table->timestamps();
         });
     }
@@ -33,6 +28,6 @@ class CreateBookingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bookings');
+        Schema::dropIfExists('testimonials');
     }
 }

@@ -140,9 +140,14 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('booking.create') }}">
-                    <i class="fas fa-fw fa-book"></i>
-                    <span>Booking Room</span></a>
+                <a class="nav-link" href="{{ route('booking.index') }}">
+                    <i class="fas fa-fw fa-hotel"></i>
+                    <span>Bookings</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('service.index') }}">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Services</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ url('admin/logout') }}">
