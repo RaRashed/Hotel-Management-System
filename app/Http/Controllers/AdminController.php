@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Admin;
 use App\Models\Booking;
+use App\Models\Testimonial;
 use Illuminate\Http\Request;
 use Cookie;
 use Illuminate\Support\Facades\DB;
@@ -85,6 +86,20 @@ class AdminController extends Controller
         session()->forget(['adminData']);
         return redirect('admin/login');
 
+    }
+
+    public function testimonial()
+    {
+        $testimonials = Testimonial::all();
+        return view('testimonial.index',['testimonials'=>$testimonials]);
+    }
+    public function destroy_testimonial($id)
+    {
+        $data=Testimonial::find($id);
+
+        $data->delete();
+
+        return redirect(url('testimonial/show'))->with('success', 'Testimonial deleted Successfully');
     }
 
 }

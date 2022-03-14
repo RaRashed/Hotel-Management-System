@@ -7,6 +7,7 @@ use App\Http\Controllers\RoomtypeController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\StaffDepartmentController;
@@ -25,6 +26,9 @@ use App\Models\RoomType;
 //Home page
 
 Route::get('/',[HomeController::class, 'home']);
+Route::get('about_us',[PageController::class, 'about_us']);
+Route::get('contact_us',[PageController::class, 'contact_us']);
+Route::post('save-contact',[PageController::class, 'save_contact']);
 //Admin Login
 Route::get('admin/login',[AdminController::class, 'login']);
 Route::post('admin/login_check',[AdminController::class, 'check_login']);
@@ -99,3 +103,8 @@ Route::get('service/detail/{id}',[HomeController::class, 'detail']);
 Route::get('customer/add-testimonial',[HomeController::class, 'add_testimonial']);
 
 Route::post('customer/save-testimonial',[HomeController::class, 'save_testimonial']);
+Route::get('testimonial/show',[AdminController::class, 'testimonial']);
+Route::get('admin/testimonials/{id}/delete',[AdminController::class, 'destroy_testimonial']);
+
+//About
+//Contact

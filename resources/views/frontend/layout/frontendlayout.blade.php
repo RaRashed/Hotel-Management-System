@@ -40,6 +40,12 @@
 
               @if (Session::has('customerSession'))
               <li class="nav-item">
+                <a class="nav-link" href="{{ url('about_us') }}">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url('contact_us') }}">Contact</a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link" href="{{ url('logout') }}">Logout</a>
               </li>
               <li class="nav-item">
@@ -52,7 +58,12 @@
 
               @else
 
-
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url('about_us') }}">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url('contact_us') }}">Contact</a>
+              </li>
               <li class="nav-item">
                 <a class="nav-link" href="{{ url('login') }}">Login</a>
               </li>

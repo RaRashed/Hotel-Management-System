@@ -150,6 +150,11 @@
                     <span>Services</span></a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="{{ url('testimonial/show') }}">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Testimonials</span></a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="{{ url('admin/logout') }}">
                     <i class="fas fa-fw fa-sign-out-alt"></i>
                     <span>Logout</span></a>
