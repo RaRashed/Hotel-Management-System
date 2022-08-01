@@ -21,7 +21,8 @@ class DatabaseSeeder extends Seeder
             RoomtypeTableSeeder::class,
             RoomtypeImageTableSeeder::class,
             CustomersTableSeeder::class,
-            TestimonialTableSeeder::class
+            TestimonialTableSeeder::class,
+            RoomsTableSeeder::class
         ]);
     }
 }
