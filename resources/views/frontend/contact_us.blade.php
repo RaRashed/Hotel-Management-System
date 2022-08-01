@@ -46,7 +46,7 @@
 
         <tr>
             <td>
-                <input type="submit" class=" btn btn-primary" value="Add Testimonial">
+                <input type="submit" class=" btn btn-primary" value="Submit">
             </td>
         </tr>
 

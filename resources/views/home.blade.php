@@ -4,15 +4,16 @@
 <div class="container">
 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
-      <div class="carousel-item active">
+        @foreach($frontendimages as $key => $frontendimage)
+        <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
+            <img src="{{asset('storage/'.$frontendimage->image)}}" class="d-block w-100" height="500px" width="1600px"  alt="...">
+        </div>
+        @endforeach
+
+      {{--  <div class="carousel-item active">
         <img src="{{ asset('asset/img/h1.jpeg') }}" class="d-block w-100" height="500px" width="1600px" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="{{ asset('asset/img/h2.jpg') }}" class="d-block w-100" height="500px" width="1600px"  alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="{{ asset('asset/img/h3.jpg') }}" class="d-block w-100" height="500px" width="1600px" alt="...">
-      </div>
+      </div>  --}}
+
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -32,14 +33,14 @@
    @foreach ($services as $service )
    <div class="row my-4">
     <div class="col-md-4">
-     <img src="{{asset('storage/'.$service->photo)}}" class="img-thumbnail" alt="...">
+     <img src="{{asset('storage/'.$service->photo)}}" height="350px" width="350px" class="img-thumbnail" alt="...">
     </div>
     <div class="col-md-8">
-        <h3>{{ $service->title }}</h3>
-        <p>
+        <h3 class="text-center">{{ $service->title }}</h3>
+        <p class="text-center">
             {{ $service->small_desc }}
         <p>
-            <a href="{{ url('service/detail/'.$service->id) }}" class="btn btn-sm btn-primary">Read More</a>
+            <a  href="{{ url('service/detail/'.$service->id) }}" class="btn btn-sm btn-primary read">Read More</a>
         </p>
 
     </div>

@@ -1,0 +1,11 @@
+a.read{
+
+    background: blue;
+	padding: 8px;
+    color: yellow;
+    margin-left: 25rem;
+    margin-top: 2rem;
+	border-radius: 25px;
+    box-sizing: border-box;
+    box-shadow: .5px .3px .5px 1px yellow;
+}

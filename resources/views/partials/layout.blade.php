@@ -92,6 +92,22 @@
                 </div>
             </li>
             <li class="nav-item">
+                <a class="nav-link @if(!request()->is('admin/frontendimage*')) collapsed @endif" href="#" data-toggle="collapse" data-target="#collapsefrontendimage"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>FrontEnd Image</span>
+                </a>
+                <div id="collapsefrontendimage" class="collapse @if(request()->is('admin/frontendimage*')) show @endif" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Frontend image</h6>
+                        <a class="collapse-item" href="{{ route('frontendimage.create') }}">Add New</a>
+                        <a class="collapse-item" href="{{ route('frontendimage.index') }}">View All</a>
+
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link @if(!request()->is('admin/customer*')) collapsed @endif" href="#" data-toggle="collapse" data-target="#collapseCustomer"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-users"></i>
@@ -100,7 +116,7 @@
                 <div id="collapseCustomer" class="collapse @if(request()->is('admin/customer*')) show @endif" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Room</h6>
+                        <h6 class="collapse-header">Customer</h6>
                         <a class="collapse-item" href="{{ route('customer.create') }}">Add New</a>
                         <a class="collapse-item" href="{{ route('customer.index') }}">View All</a>
 

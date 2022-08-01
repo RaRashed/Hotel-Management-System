@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\FrontendImage;
 use App\Models\RoomType;
 use App\Models\Service;
 use App\Models\Testimonial;
@@ -14,9 +15,10 @@ class HomeController extends Controller
     public function home()
     {
         $services=Service::all();
+        $frontendimage = FrontendImage::all();
         $roomtypes =RoomType::all();
         $testimonials =Testimonial::all();
-        return view('home',['roomtypes'=>$roomtypes,'services' => $services,'testimonials'=>$testimonials]);
+        return view('home',['roomtypes'=>$roomtypes,'frontendimages'=>$frontendimage,'services' => $services,'testimonials'=>$testimonials]);
     }
     public function detail($id)
     {

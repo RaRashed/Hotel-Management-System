@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoomtypeController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\FrontendImageController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ServiceController;
@@ -54,7 +55,8 @@ Route::resource('admin/customer', CustomerController::class);
 
 //image delete
 
-Route::get('admin/roomtypeimage/delete/{id}',[RoomtypeController::class, 'destroy_image']);
+//Route::get('admin/roomtypeimage/delete/{id}',[RoomtypeController::class, 'destroy_image']);
+Route::delete('deleteimage/{img_id}', 'Cat@destroy_image')->name('delete.image');
 
 //Department Routes
 
@@ -108,3 +110,7 @@ Route::get('admin/testimonials/{id}/delete',[AdminController::class, 'destroy_te
 
 //About
 //Contact
+
+//frontend image
+Route::get('admin/frontendimage/{id}/delete',[FrontendImageController::class, 'destroy']);
+Route::resource('admin/frontendimage', FrontendImageController::class);
