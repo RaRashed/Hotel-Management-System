@@ -36,10 +36,12 @@
    <!-- Service Section Strat -->
    <div class="container my-4">
     <h1 class="text-center border-bottom">Services</h1>
+
    @foreach ($services as $service )
    <div class="row my-4">
     <div class="col-md-4">
-     <img src="{{url('storage/'.$service->photo)}}" height="350px" width="350px" class="img-thumbnail" alt="...">
+     {{-- <img src="{{url('storage/'.$service->photo)}}" height="350px" width="350px" class="img-thumbnail" alt="..."> --}}
+     <img src="{{ asset('asset/img/cars.jpg') }}" height="350px" width="350px" class="img-thumbnail" alt="...">
     </div>
     <div class="col-md-8">
         <h3 class="text-center">{{ $service->title }}</h3>
@@ -53,6 +55,7 @@
     </div>
 
    @endforeach
+
 </div>
 
 
