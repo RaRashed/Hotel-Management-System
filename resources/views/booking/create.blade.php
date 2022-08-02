@@ -1,6 +1,7 @@
 @extends('partials.layout')
 @section('content')
 
+
 <div class="container-fluid">
 
     <!-- DataTales Example -->

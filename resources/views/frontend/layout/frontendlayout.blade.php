@@ -72,7 +72,7 @@
                 <a class="nav-link" href="{{ url('register') }}">Register</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link btn btn-sm btn-danger" href="#">Booking</a>
+                <a class="nav-link btn btn-sm btn-danger" href="{{ url('login') }}">Booking</a>
               </li>
 
               @endif
