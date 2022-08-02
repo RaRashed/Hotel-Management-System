@@ -6,7 +6,7 @@
     <div class="carousel-inner">
         @foreach($frontendimages as $key => $frontendimage)
         <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
-            <img src="{{asset('storage/'.$frontendimage->image)}}" class="d-block w-100" height="500px" width="1600px"  alt="...">
+            <img src="{{url('storage/'.$frontendimage->image)}}" class="d-block w-100" height="500px" width="1600px"  alt="...">
         </div>
         @endforeach
 
@@ -33,7 +33,7 @@
    @foreach ($services as $service )
    <div class="row my-4">
     <div class="col-md-4">
-     <img src="{{asset('storage/'.$service->photo)}}" height="350px" width="350px" class="img-thumbnail" alt="...">
+     <img src="{{url('storage/'.$service->photo)}}" height="350px" width="350px" class="img-thumbnail" alt="...">
     </div>
     <div class="col-md-8">
         <h3 class="text-center">{{ $service->title }}</h3>
@@ -69,11 +69,11 @@
 
                 @foreach ($rtype->roomtypeimages as $index=> $img )
                 <td class="imgcol{{ $img->id }}">
-                    <a href="{{asset('storage/'.$img->image_src)}}" data-lightbox="rgallery{{ $rtype->id }}">
+                    <a href="{{url('storage/'.$img->image_src)}}" data-lightbox="rgallery{{ $rtype->id }}">
                         @if($index > 0)
-                        <img class="img-fluid hide" src="{{asset('storage/'.$img->image_src)}}" width="150px" height="100px" alt="">
+                        <img class="img-fluid hide" src="{{url('storage/'.$img->image_src)}}" width="150px" height="100px" alt="">
                         @else
-                        <img class="img-fluid" src="{{asset('storage/'.$img->image_src)}}" width="150px" height="100px" alt="">
+                        <img class="img-fluid" src="{{url('storage/'.$img->image_src)}}" width="150px" height="100px" alt="">
 
                         @endif
 
