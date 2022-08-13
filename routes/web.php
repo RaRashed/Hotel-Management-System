@@ -8,6 +8,7 @@ use App\Http\Controllers\RoomController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\FrontendImageController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\StaffController;
@@ -114,3 +115,17 @@ Route::get('admin/testimonials/{id}/delete',[AdminController::class, 'destroy_te
 //frontend image
 Route::get('admin/frontendimage/{id}/delete',[FrontendImageController::class, 'destroy']);
 Route::resource('admin/frontendimage', FrontendImageController::class);
+
+
+//GITHUB ROUTES
+Route::get('login/github',[LoginController::class,'github'])->name('github.login');
+Route::get('login/github/redirect',[LoginController::class,'githubredirect'])->name('github.redirect');
+
+
+//GOOGLE ROUTES
+Route::get('login/google',[LoginController::class,'google'])->name('google.login');
+Route::get('login/google/redirect',[LoginController::class,'googleredirect'])->name('google.redirect');
+
+//FACEBOOK ROUTES
+Route::get('login/facebook',[LoginController::class,'facebook'])->name('facebook.login');
+Route::get('login/facebook/redirect',[LoginController::class,'facebookredirect'])->name('facebook.redirect');
